@@ -7,22 +7,23 @@
 
 #include "DType.h"
 #include <vector>
+#include <cstdint>
 
 class TensorType {
 public:
-    TensorType(DType dtype, std::vector<long> shape);
+    TensorType(DType dtype, std::vector<int64_t> shape);
     DType dtype() const;
-    const std::vector<long> &shape() const;
+    const std::vector<int64_t> &shape() const;
 
-    int rank() const;
-    long numElements() const;
+    int32_t rank() const;
+    int64_t numElements() const;
 
     bool operator==(const TensorType &other) const;
     bool operator!=(const TensorType &other) const;
 
     private:
     DType dtype_;
-    std::vector<long> shape_;
+    std::vector<int64_t> shape_;
 };
 
 

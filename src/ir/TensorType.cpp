@@ -4,7 +4,7 @@
 
 #include "ir/TensorType.h"
 
-TensorType::TensorType(DType dtype, std::vector<long> shape)
+TensorType::TensorType(DType dtype, std::vector<int64_t> shape)
     : dtype_(dtype), shape_(shape) {
 }
 
@@ -12,18 +12,18 @@ DType TensorType::dtype() const {
     return dtype_;
 }
 
-const std::vector<long> &TensorType::shape() const {
+const std::vector<int64_t> &TensorType::shape() const {
     return shape_;
 }
 
 
-int TensorType::rank() const {
-    return static_cast<int>(shape_.size());
+int32_t TensorType::rank() const {
+    return static_cast<int32_t>(shape_.size());
 }
 
-long TensorType::numElements() const {
-    long n = 1;
-    for (long dim : shape_) {
+int64_t TensorType::numElements() const {
+    int64_t n = 1;
+    for (int64_t dim : shape_) {
         n *= dim;
     }
 
