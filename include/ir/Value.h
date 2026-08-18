@@ -6,9 +6,10 @@
 #define VALUE_H
 
 #include "TensorType.h"
-#include "Operation.h"
 
 class Operation;
+
+
 class Value {
     public:
     Value(int32_t id, TensorType type, Operation *defOp);
