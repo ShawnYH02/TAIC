@@ -22,7 +22,7 @@ int main() {
     Graph g;
     Value *va = g.addInput(TensorType(DType::Float32, {1, 2, 3, 4}));
     Value *vb = g.addInput(TensorType(DType::Float32, {1, 3, 4, 5}));
-    Value *vc = g.addBinary(OpKind::Add, va, vb, TensorType(DType::Float32, {2, 3}));
+    Value *vc = g.addBinary(OpKind::Add, va, vb, TensorType(DType::Float32, {2, 3, 4, 5}));
 
     g.addOutput(vc);
 

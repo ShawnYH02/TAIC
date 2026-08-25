@@ -7,7 +7,7 @@
 Value *Graph::addInput(const TensorType &type) {
     std::vector<Value*> operands;
     std::vector<std::unique_ptr<Value>> results;
-    results.push_back(std::make_unique<Value>(++nextValueId_, type, nullptr));
+    results.push_back(std::make_unique<Value>(nextValueId_++, type, nullptr));
 
     auto op = std::make_unique<Operation>(OpKind::Input, std::move(operands), std::move(results));
 
@@ -21,6 +21,7 @@ Value *Graph::addInput(const TensorType &type) {
 
 Value *Graph::addUnary(OpKind kind, Value *input, const TensorType &resultType) {
     std::vector<Value*> operands;
+    operands.push_back(input);
 
     std::vector<std::unique_ptr<Value>> results;
     results.push_back(std::make_unique<Value>(nextValueId_++, resultType, nullptr));
