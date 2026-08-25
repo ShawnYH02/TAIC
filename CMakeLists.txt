@@ -16,7 +16,8 @@ add_executable(TAIC main.cpp
         src/ir/Value.cpp
         src/ir/Operation.cpp
         src/ir/Graph.cpp
-        include/ir/Printer.h)
+        include/ir/Printer.h
+        include/ir/Verifier.h)
 
 target_include_directories(TAIC PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include

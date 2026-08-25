@@ -4,9 +4,7 @@
 
 #include <string>
 
-#include "ir/DType.h"
-#include "ir/Graph.h"
-#include "ir/Operation.h"
+#include "ir/Printer.h"
 
 static std::string dtypeToString(DType dtype) {
     switch (dtype) {

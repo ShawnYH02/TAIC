@@ -6,6 +6,7 @@
 #include "ir/Operation.h"
 #include "ir/Graph.h"
 #include "ir/Printer.h"
+#include "ir/Verifier.h"
 
 int main() {
     TensorType a(DType::Float32, {1, 2, 3, 4});
@@ -21,9 +22,10 @@ int main() {
     Operation op(OpKind::MatMul, {&v}, std::move(res));
 
     Graph g;
-    Value *va = g.addInput(TensorType(DType::Float32, {1, 2, 3, 4}));
-    Value *vb = g.addInput(TensorType(DType::Float32, {1, 3, 4, 5}));
-    Value *vc = g.addBinary(OpKind::Add, va, vb, TensorType(DType::Float32, {2, 3, 4, 5}));
+
+    Value *va = g.addInput(TensorType(DType::Float32, {1, 2, 3}));
+    Value *vb = g.addInput(TensorType(DType::Float32, {5, 3, 4}));
+    Value *vc = g.addBinary(OpKind::MatMul, va, vb, TensorType(DType::Float32, {5, 2, 4}));
 
     g.addOutput(vc);
 
@@ -47,6 +49,8 @@ int main() {
     std::cout << op.results().size() << std::endl;
 
     printGraph(g, std::cout);
+
+    verifyGraph(g, std::cerr);
     return 0;
 }
 
