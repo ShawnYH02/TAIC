@@ -25,7 +25,7 @@ public:
     const std::vector<Value*> &operands() const;
     const std::vector<std::unique_ptr<Value>> &results() const;
 
-    Value *result(int32_t idx);
+    Value *result(int32_t idx) const;
 
     private:
     OpKind kind_;

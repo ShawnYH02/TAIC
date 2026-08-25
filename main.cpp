@@ -5,6 +5,7 @@
 #include "ir/Value.h"
 #include "ir/Operation.h"
 #include "ir/Graph.h"
+#include "ir/Printer.h"
 
 int main() {
     TensorType a(DType::Float32, {1, 2, 3, 4});
@@ -44,6 +45,8 @@ int main() {
     std::cout << static_cast<int>(op.kind()) << std::endl;
     std::cout << op.operands().size() << std::endl;
     std::cout << op.results().size() << std::endl;
+
+    printGraph(g, std::cout);
     return 0;
 }
 

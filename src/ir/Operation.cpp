@@ -20,7 +20,7 @@ const std::vector<std::unique_ptr<Value>> &Operation::results() const {
     return results_;
 }
 
-Value *Operation::result(int32_t idx) {
+Value *Operation::result(int32_t idx) const {
     return results_[idx].get();
 }
 
