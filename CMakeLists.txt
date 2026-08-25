@@ -14,7 +14,8 @@ add_executable(TAIC main.cpp
         tests/test_ir.cpp
         src/ir/TensorType.cpp
         src/ir/Value.cpp
-        src/ir/Operation.cpp)
+        src/ir/Operation.cpp
+        src/ir/Graph.cpp)
 
 target_include_directories(TAIC PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include

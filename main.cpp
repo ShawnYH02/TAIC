@@ -4,6 +4,7 @@
 #include "ir/TensorType.h"
 #include "ir/Value.h"
 #include "ir/Operation.h"
+#include "ir/Graph.h"
 
 int main() {
     TensorType a(DType::Float32, {1, 2, 3, 4});
@@ -17,6 +18,19 @@ int main() {
     res.push_back(std::move(result));
 
     Operation op(OpKind::MatMul, {&v}, std::move(res));
+
+    Graph g;
+    Value *va = g.addInput(TensorType(DType::Float32, {1, 2, 3, 4}));
+    Value *vb = g.addInput(TensorType(DType::Float32, {1, 3, 4, 5}));
+    Value *vc = g.addBinary(OpKind::Add, va, vb, TensorType(DType::Float32, {2, 3}));
+
+    g.addOutput(vc);
+
+    std::cout << g.operations().size() << std::endl;
+    std::cout << g.outputs().size() << std::endl;
+    std::cout << vc->id() << std::endl;
+    std::cout << (vc->defOp() != nullptr) << std::endl;
+
 
     std::cout << a.rank() << std::endl;
     std::cout << b.numElements() << std::endl;

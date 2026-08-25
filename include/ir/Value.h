@@ -17,6 +17,7 @@ class Value {
     int32_t id() const;
     const TensorType &type() const;
     Operation *defOp() const;
+    void setDefOp(Operation *defOp);
 
 private:
     int32_t id_;

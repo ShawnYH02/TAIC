@@ -4,7 +4,7 @@
 
 #include "ir/Value.h"
 
-Value::Value(int id, TensorType type, Operation *defOp)
+Value::Value(int32_t id, TensorType type, Operation *defOp)
     : id_(id), type_(type), defOp_(defOp) {
 }
 
@@ -18,6 +18,10 @@ const TensorType &Value::type() const {
 
 Operation *Value::defOp() const {
     return defOp_;
+}
+
+void Value::setDefOp(Operation *defOp) {
+    defOp_ = defOp;
 }
 
 
